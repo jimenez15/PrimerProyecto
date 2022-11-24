@@ -1,10 +1,10 @@
 import React from 'react';
-import Formulario from './componentes/Formulario';
+import VectorIcons from './componentes/VectorIcons';
 
 export default function App(){
 
   return(
-    <Formulario/>
+    <VectorIcons/>
   )
 } 
 
