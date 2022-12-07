@@ -1,7 +1,7 @@
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function App(){
     return (
-    <MaterialCommunityIcons name="alert-octagram-outline" size={300}/>
+    <Ionicons name="alert-octagram-outline" size={300}/>
     )
 }

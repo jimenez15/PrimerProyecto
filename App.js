@@ -1,10 +1,10 @@
 import React from 'react';
-import VectorIcons from './componentes/VectorIcons';
+import Pantallas4 from './componentes/Pantallas4';
 
 export default function App(){
 
   return(
-    <VectorIcons/>
+    <Pantallas4/>
   )
 } 
 
