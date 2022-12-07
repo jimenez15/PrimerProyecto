@@ -23,7 +23,7 @@ function Profile({navigation}) {
 
     const printElement=({item})=>{
         return(
-            <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center'}}>
+            <View>
                 <TouchableOpacity onPress={()=>navigation.navigate('Detalles',{item})}>
                 <Text style={{margin:5}}>{item.nombre}</Text>
                 </TouchableOpacity>
@@ -31,7 +31,7 @@ function Profile({navigation}) {
         )
     }
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center',marginLeft:25, marginTop:10 }}>
             <FlatList
                 data={DATA}
                 renderItem={printElement}
@@ -55,7 +55,9 @@ function User({route}) {
 function SettingsScreen() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
+        <Text>Esta aplicación se usa para ver información
+        más detallada de algunas personas
+        </Text>
       </View>
     );
   }
