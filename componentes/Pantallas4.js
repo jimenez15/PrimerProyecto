@@ -1,24 +1,53 @@
 import * as React from 'react';
-import { Text, View} from 'react-native';
+import { Text, View,Button,FlatList,TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-function User({navigation, route}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button onPress={()=>navigation.navigate} title='Pasar página'/>
-    </View>
-  );
+
+function Profile({navigation}) {
+    const DATA = [
+        { id: 1,
+        nombre: 'Carlos Manuel Sánchez Martín',
+        edad:35,
+        sexo:'Hombre',},
+        { id: 2,
+        nombre: 'Adrián Aparcero Gelado',
+        edad:26,
+        sexo:'Hombre',},
+        { id: 3,
+        nombre: 'Antonio Jiménez González',
+        edad:25,
+        sexo:'Hombre',},];
+
+    const printElement=({item})=>{
+        return(
+            <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center'}}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Detalles',{item})}>
+                <Text style={{margin:5}}>{item.nombre}</Text>
+                </TouchableOpacity>
+                </View>
+        )
+    }
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <FlatList
+                data={DATA}
+                renderItem={printElement}
+                keyExtractor={item=>item.id}
+            />
+        </View>
+    );
 }
 
-function Profile({route}) {
-
+function User({route}) {
+    const {item}=route.params;
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Profile Screen</Text> 
+      <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center',margin:5 }}>
+        <Text>Nombre: {item.nombre}</Text> 
+        <Text>Edad: {item.edad}</Text> 
+        <Text>Sexo: {item.sexo}</Text> 
       </View>
     );
   }
@@ -44,8 +73,8 @@ export default function App() {
     
                 if (route.name === 'Home') {
                   iconName = focused
-                    ? 'ios-accessibility'
-                    : 'ios-accessibility-outline';
+                    ? "person-circle"
+                    : 'person-circle-outline';
                 } else if (route.name === 'Settings') {
                   iconName = focused 
                   ? 'ios-information-circle'
@@ -58,8 +87,8 @@ export default function App() {
               tabBarInactiveTintColor: 'black',
             })}
           >
-            <Tab.Screen name="Home" component={HomeGroup} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="Home" component={HomeGroup} options={{headerTitleAlign:'center'}} />
+            <Tab.Screen name="Settings" component={SettingsScreen} options={{headerTitleAlign:'center'}} />
           </Tab.Navigator>
         </NavigationContainer>
       );
@@ -68,8 +97,8 @@ export default function App() {
       function HomeGroup() {
         return (
             <Stack.Navigator initialRouteName="Profile">
-              <Stack.Screen name='Profile' component={Profile} options={{title:'Ususarios'}}/>
-              <Stack.Screen name="Detalles"  component={User} options={{title:'Perfil'}} />
+              <Stack.Screen name='Profile' component={Profile} options={{title:'Usuarios',headerTitleAlign:'center'}}/>
+              <Stack.Screen name="Detalles"  component={User} options={{title:'Perfil',headerTitleAlign:'center'}} />
             </Stack.Navigator>
         );
       }
