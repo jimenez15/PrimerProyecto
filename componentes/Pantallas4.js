@@ -1,69 +1,12 @@
 import * as React from 'react';
-import { Text, View,Button,FlatList,TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import HomeGroup from '../src/navigation/HomeGroup';
+import SettingsScreen from '../src/containers/SettingsScreen';
 
-
-function Profile({navigation}) {
-    const DATA = [
-        { id: 1,
-        nombre: 'Carlos Manuel Sánchez Martín',
-        edad:35,
-        sexo:'Hombre',},
-        { id: 2,
-        nombre: 'Adrián Aparcero Gelado',
-        edad:26,
-        sexo:'Hombre',},
-        { id: 3,
-        nombre: 'Antonio Jiménez González',
-        edad:25,
-        sexo:'Hombre',},];
-
-    const printElement=({item})=>{
-        return(
-            <View>
-                <TouchableOpacity onPress={()=>navigation.navigate('Detalles',{item})}>
-                <Text style={{margin:5}}>{item.nombre}</Text>
-                </TouchableOpacity>
-                </View>
-        )
-    }
-    return (
-        <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center',marginLeft:25, marginTop:10 }}>
-            <FlatList
-                data={DATA}
-                renderItem={printElement}
-                keyExtractor={item=>item.id}
-            />
-        </View>
-    );
-}
-
-function User({route}) {
-    const {item}=route.params;
-    return (
-      <View style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'center',margin:5 }}>
-        <Text>Nombre: {item.nombre}</Text> 
-        <Text>Edad: {item.edad}</Text> 
-        <Text>Sexo: {item.sexo}</Text> 
-      </View>
-    );
-  }
-
-function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Esta aplicación se usa para ver información
-        más detallada de algunas personas
-        </Text>
-      </View>
-    );
-  }
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
@@ -96,12 +39,5 @@ export default function App() {
       );
     }
 
-      function HomeGroup() {
-        return (
-            <Stack.Navigator initialRouteName="Profile">
-              <Stack.Screen name='Profile' component={Profile} options={{title:'Usuarios',headerTitleAlign:'center'}}/>
-              <Stack.Screen name="Detalles"  component={User} options={{title:'Perfil',headerTitleAlign:'center'}} />
-            </Stack.Navigator>
-        );
-      }
+     
     
