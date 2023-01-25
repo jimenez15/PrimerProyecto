@@ -1,14 +1,12 @@
-import React,{useState,useEffect} from 'react';
-import {View,TextInput,Button} from 'react-native';
+import React,{useState} from 'react';
+import {View,TextInput,Button, Text} from 'react-native';
 
 
 export default function PantallaAlmacen() {
-
-    const[fruitName, setFruitName]=useState();
+  const[fruitName, setFruitName]=useState();
     const [validateFruitName,setValidateFruitName]=useState(false);
     const[fruitPrice, setFruitPrice]=useState(0);
-    const [validatePrice,setValidatePrice]=useState(false);
-
+    const [validateFruitPrice,setValidateFruitPrice]=useState(false);
 
     function setName(fruitName){
         const re = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
@@ -32,33 +30,48 @@ export default function PantallaAlmacen() {
         setFruitPrice(fruitPrice);
     }
 
-    function checkStatus(){
-        if(setValidateFruitName && setValidateFruitPrice){
-            postFruits()
+     function checkStatus(){
+        console.log("----El vslot fr:validateFruitName ", validateFruitName);
+        console.log("----El vslot validateFruitPrice: ", validateFruitPrice);
+        if(validateFruitName && validateFruitPrice){
+            postFruits();
         }
     }
 
     function postFruits() {
-    fetch("http://192.168.137.1:8080/fruits", {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: fruitName,
-            price:fruitPrice,
-        }),
-    });
+        console.log("--Entr en el post");
+        fetch("http://192.168.137.1:8080/fruits",{
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name:  fruitName,
+                price: fruitPrice,
+            }),
+        })
+
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log(
+                "POST Response",
+                "Response Body -> " + JSON.stringify(responseData)
+            )
+        }).catch(
+            console.log("Error")
+        )
+
+    }
 
     return(
         <View>
         <TextInput 
-        placeholder='Nueva fruta'
+        placeholder={validateFruitName ? 'Campo erróneo':'Nombre fruta'}
         onChangeText={fruitName=>setName(fruitName)}/>
 
         <TextInput
-        placeholder='Introduzca Precio'
+        placeholder={validateFruitPrice ? 'Campo erróneo':'Introduzca precio' }
         onChangeText={fruitPrice=>setPrice(fruitPrice)}/>
 
         <Button
@@ -67,4 +80,4 @@ export default function PantallaAlmacen() {
         </View>
     )
 }
-}
+

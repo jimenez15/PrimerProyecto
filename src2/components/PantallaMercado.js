@@ -1,5 +1,5 @@
 import React,{useState,useEffect}from 'react';
-import { FlatList, Text, RefreshControl,ScrollView } from "react-native";
+import { FlatList, Text, RefreshControl,View } from "react-native";
 
 
 const wait = (timeout) => {
@@ -24,11 +24,11 @@ export default function PantallaMercado() {
 
     const printElement = ({ item }) => {
         return (
-            <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}>
+            <View >
                 <Text>{item.id}</Text>
                 <Text>{item.name}</Text>
                 <Text>{item.price}</Text>
-            </ScrollView>
+            </View>
         )
     }
 
@@ -46,6 +46,7 @@ export default function PantallaMercado() {
             data={fruits}
             renderItem={printElement}
             keyExtractor={item => item.id}
+            refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         />
     );
 }
