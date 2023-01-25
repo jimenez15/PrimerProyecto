@@ -1,10 +1,10 @@
 import React from 'react';
-import Pantallas4 from './componentes/Pantallas4';
+import Inicio from './src2/components/Inicio';
 
 export default function App(){
 
   return(
-    <Pantallas4/>
+    <Inicio/>
   )
 } 
 

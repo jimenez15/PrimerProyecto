@@ -3,17 +3,18 @@ import { Text, View,FlatList,TouchableOpacity} from 'react-native';
 
 
 export default function ProfileScreen({navigation}) {
+    
     const DATA = [
         { id: 1,
-        nombre: 'Carlos Manuel Sánchez Martín',
+        nombre:'Carlos Manuel Sánchez Martín',
         edad:35,
         sexo:'Hombre',},
         { id: 2,
-        nombre: 'Adrián Aparcero Gelado',
+        nombre:'Adrián Aparcero Gelado',
         edad:26,
         sexo:'Hombre',},
         { id: 3,
-        nombre: 'Antonio Jiménez González',
+        nombre:'Antonio Jiménez González',
         edad:25,
         sexo:'Hombre',},];
 
