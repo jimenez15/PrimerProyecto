@@ -1,9 +1,7 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { SafeAreaView, View, FlatList,} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar,Button } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 export default function Emoticonos() {
 const DATA = [

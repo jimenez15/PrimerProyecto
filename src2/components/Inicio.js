@@ -1,9 +1,10 @@
-import React,{useState,}from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import PantallaMercado from './PantallaMercado';
 import PantallaAlmacen from './PantallaAlmacen';
+
 
 
 const Tab = createBottomTabNavigator();

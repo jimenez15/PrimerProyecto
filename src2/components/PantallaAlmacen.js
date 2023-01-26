@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
-import {View,TextInput,Button, Text} from 'react-native';
+import {View,TextInput,Button} from 'react-native';
 
 
 export default function PantallaAlmacen() {
-  const[fruitName, setFruitName]=useState();
+    const[fruitName, setFruitName]=useState();
     const [validateFruitName,setValidateFruitName]=useState(false);
     const[fruitPrice, setFruitPrice]=useState(0);
     const [validateFruitPrice,setValidateFruitPrice]=useState(false);
@@ -31,15 +31,14 @@ export default function PantallaAlmacen() {
     }
 
      function checkStatus(){
-        console.log("----El vslot fr:validateFruitName ", validateFruitName);
-        console.log("----El vslot validateFruitPrice: ", validateFruitPrice);
+
         if(validateFruitName && validateFruitPrice){
             postFruits();
         }
     }
 
     function postFruits() {
-        console.log("--Entr en el post");
+
         fetch("http://192.168.137.1:8080/fruits",{
             method: 'POST',
             headers: {
@@ -58,21 +57,27 @@ export default function PantallaAlmacen() {
                 "POST Response",
                 "Response Body -> " + JSON.stringify(responseData)
             )
-        }).catch(
-            console.log("Error")
-        )
-
+            setFruitName("");
+            setFruitPrice("");
+            setValidateFruitName(true);
+            setValidateFruitPrice(true);
+            
+        }).catch()
     }
+
 
     return(
         <View>
         <TextInput 
-        placeholder={validateFruitName ? 'Campo erróneo':'Nombre fruta'}
-        onChangeText={fruitName=>setName(fruitName)}/>
+                placeholder={validateFruitName ? 'Campo erróneo' : 'Nombre fruta' }
+        value={fruitName}
+        onChangeText={name=>setName(name)}/>
 
         <TextInput
-        placeholder={validateFruitPrice ? 'Campo erróneo':'Introduzca precio' }
-        onChangeText={fruitPrice=>setPrice(fruitPrice)}/>
+                placeholder={validateFruitPrice ? 'Campo erróneo' : 'Introduzca precio' }
+        value={fruitPrice}
+        keyboardType="numeric"
+        onChangeText={price=>setPrice(price)}/>
 
         <Button
             onPress={() => checkStatus()}
