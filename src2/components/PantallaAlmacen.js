@@ -1,5 +1,8 @@
 import React,{useState} from 'react';
-import {View,TextInput,Button} from 'react-native';
+import {View,TextInput,Button, StyleSheet} from 'react-native';
+import StyleGeneral from '../styles/General';
+import StyleAlmacen from '../styles/Almacen'
+
 
 
 export default function PantallaAlmacen() {
@@ -67,8 +70,8 @@ export default function PantallaAlmacen() {
 
 
     return(
-        <View>
-        <TextInput 
+        <View style={[StyleGeneral.general]}>
+            <TextInput style={[StyleAlmacen.contenedor_datos]}
                 placeholder={validateFruitName ? 'Campo erróneo' : 'Nombre fruta' }
         value={fruitName}
         onChangeText={name=>setName(name)}/>
@@ -79,7 +82,7 @@ export default function PantallaAlmacen() {
         keyboardType="numeric"
         onChangeText={price=>setPrice(price)}/>
 
-        <Button
+        <Button style={[StyleAlmacen.sendbutton]}
             onPress={() => checkStatus()}
             title={"Añadir nueva fruta"}/>
         </View>

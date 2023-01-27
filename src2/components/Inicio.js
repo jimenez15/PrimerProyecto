@@ -19,17 +19,17 @@ export default function App() {
 
                         if (route.name === 'Home') {
                             iconName = focused
-                                ? "person-circle"
-                                : 'person-circle-outline';
+                                ? 'cart'
+                                : 'cart-outline';
                         } else if (route.name === 'Settings') {
                             iconName = focused
-                                ? 'ios-information-circle'
-                                : 'ios-information-circle-outline';
+                                ? 'nutrition'
+                                : 'nutrition-outline';
                         }
 
                         return <Ionicons name={iconName} size={size} color={color} />;
                     },
-                    tabBarActiveTintColor: 'magenta',
+                    tabBarActiveTintColor: 'aqua',
                     tabBarInactiveTintColor: 'black',
                 })}
             >

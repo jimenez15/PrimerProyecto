@@ -1,5 +1,7 @@
 import React,{useState,useEffect}from 'react';
-import { FlatList, Text, RefreshControl,View, Image} from "react-native";
+import { FlatList, Text, RefreshControl,View, Image, StyleSheet} from "react-native";
+import StyleMercado from '../styles/Mercado';
+import StyleGeneral from '../styles/General'
 import Kiwi from "../assets/imgFrutas/kiwi.jpg";
 import Manzana from "../assets/imgFrutas/manzana.jpg";
 import Melocoton from "../assets/imgFrutas/melocoton.jpg";
@@ -42,11 +44,12 @@ export default function PantallaMercado() {
 
     const printElement = ({ item }) => {
         return (
-            <View>
-                <Text>{item.id}</Text>
-                <Text>{item.name}</Text>
-                <Text>{item.price}</Text>
-                <Image source={frutas[item.name]}/>
+            <View style={[StyleGeneral.general]}>
+            <View style={[StyleMercado.fruitContainer]}>
+                    <Text style={[StyleMercado.fruitText]}>{item.name}</Text>
+                    <Text style={[StyleMercado.fruitText]}>{item.price}</Text>
+                    <Image style={[StyleMercado.imgFruit]} source={frutas[item.name]}/>
+            </View>
             </View>
         )
     }

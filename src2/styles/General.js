@@ -1,14 +1,18 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet,AnimationEvent} from 'react-native';
 
-
-export default styles;
 
 const styles=StyleSheet.create({
 
     general:{
-        fontFamily: sans-serif,
+        fontFamily: 'sans-serif',
         backgroundColor: 'aqua',
-        color: 'aqua' 
+         
 
     },
-})
+
+    sendbutton:{
+       Color:'black'
+    }
+});
+
+export default styles;
